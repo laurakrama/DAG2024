@@ -1,0 +1,10 @@
+streamlit
+pandas
+folium
+streamlit_folium
+geopandas
+matplotlib
+plotly.express
+matplotlib.pyplot
+fiona.crs
+datetime
