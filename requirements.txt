@@ -1,14 +1,3 @@
-streamlit
-pandas
-folium
-streamlit_folium
-geopandas
-matplotlib
-plotly.express
-matplotlib.pyplot
-fiona.crs
-datetime
-fiona
 altair==5.2.0
 ansi2html==1.9.1
 asttokens==2.4.1
