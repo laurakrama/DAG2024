@@ -8,3 +8,4 @@ plotly.express
 matplotlib.pyplot
 fiona.crs
 datetime
+fiona
