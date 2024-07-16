@@ -33,9 +33,9 @@ st.set_page_config(
 
 with st.container():
     # Carregar os dados geoespaciais
-    limite_imovel_original = gpd.read_file('.streamlit/fontes/areaImovel_amostra.geojson', crs=crs_original)
-    reserva_legal_original = gpd.read_file('.streamlit/fontes/reservaLegal_amostra.geojson', crs=crs_original)
-    vegetacao_nativa_original = gpd.read_file('.streamlit/fontes/vegetacaoNativa_amostra.geojson', crs=crs_original)
+    limite_imovel_original = gpd.read_file('streamlit/fontes/areaImovel_amostra.geojson', crs=crs_original)
+    reserva_legal_original = gpd.read_file('streamlit/fontes/reservaLegal_amostra.geojson', crs=crs_original)
+    vegetacao_nativa_original = gpd.read_file('streamlit/fontes/vegetacaoNativa_amostra.geojson', crs=crs_original)
 
     # Seleção do código do imóvel
     codigo = st.selectbox('Selecione o código do imóvel', limite_imovel_original['cod_imovel'].unique())
