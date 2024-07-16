@@ -30,4 +30,4 @@ with st.container():
              )
     st.write("Sob o contexto de REDD+, existem dois tipos de desmatamento evitado. O primeiro é o 'desmatamento planejado evitado', conhecido pela sigla APD (Avoided Planned Deforestation), aplicado em áreas que poderiam ter sido desmatadas legalmente, mas onde se optou por não realizar o desmatamento. Um exemplo seria um proprietário de imóvel rural no Brasil (produtor ou empresa) que possui excedente de vegetação nativa e decide mantê-la. O segundo é o AUD (Avoided Unplanned Deforestation), esses projetos protegem principalmente áreas que poderiam sofrer desmatamento ilegal, como Unidades de Conservação, Reservas Legais ou outras áreas onde a supressão da vegetação não é permitida."
              )
-    st.image('.streamlit\\fontes\\redd.jpg', caption='exemplo')
+    st.image('streamlit\\fontes\\redd.jpg', caption='exemplo')
