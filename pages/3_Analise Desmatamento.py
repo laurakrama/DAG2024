@@ -5,10 +5,10 @@ from datetime import datetime, date
 import pandas as pd
 
 # Carregar os dados de desmatamento
-desmatamento_path = '.streamlit/fontes/desmatamento_Ruropolis.geojson'
+desmatamento_path = 'streamlit/fontes/desmatamento_Ruropolis.geojson'
 desmatamento_gdf = gpd.read_file(desmatamento_path)
-municipio = gpd.read_file('.streamlit/fontes/municipio_Ruropolis.geojson')
-car = gpd.read_file('.streamlit/fontes/areaImovel_amostra.geojson')
+municipio = gpd.read_file('streamlit/fontes/municipio_Ruropolis.geojson')
+car = gpd.read_file('streamlit/fontes/areaImovel_amostra.geojson')
 
 # Converter a coluna de data para o tipo datetime
 desmatamento_gdf['image_date'] = pd.to_datetime(
