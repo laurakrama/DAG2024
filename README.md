@@ -1,1 +1,5 @@
-streamlit
+O presente projeto tem por objetivo principal verificar as áreas de APD (Desmatamento Planejado Evitado) e AUD (desmatamento não planejado evitado) de propriedades localizadas no município de Rurópolis-PA, categorias de projetos de crédito de carbono REDD+ (Redução de Emissões por Desmatamento e Degradação), registrado na plataforma Verra com a ID 2551. A APD consiste basicamente em evitar o desmatamento de áreas legalmente autorizadas à supressão da vegetação, como os excedentes de Reserva Legal das propriedades, enquanto a AUD evita o desmatamento em áreas restritas, como a própria Reserva Legal de uma propriedade.
+
+O público-alvo/usuário dessa aplicação web são proprietários de terras, investidores e desenvolvedoras de projeto de crédito de carbono que queiram verificar o potencial de uma propriedade para esse tipo de projeto.
+
+Também pretende-se trazer uma página com dados temporais de desmatamento do município, tendo em vista que na metodologia de REDD, o potencial de carbono é gerado em consideração a áreas com pressão de desmatamento, principalmente quando se trata de AUD.
