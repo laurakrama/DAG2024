@@ -5,6 +5,7 @@ from streamlit_folium import st_folium
 import matplotlib.pyplot as plt
 import plotly.express as px
 from fiona.crs import from_epsg
+import numpy as np
 
 crs_original = 'EPSG:4674'  # SIRGAS 2000
 
@@ -33,9 +34,9 @@ st.set_page_config(
 
 with st.container():
     # Carregar os dados geoespaciais
-    limite_imovel_original = gpd.read_file('streamlit/fontes/areaImovel_amostra.geojson', crs=crs_original)
-    reserva_legal_original = gpd.read_file('streamlit/fontes/reservaLegal_amostra.geojson', crs=crs_original)
-    vegetacao_nativa_original = gpd.read_file('streamlit/fontes/vegetacaoNativa_amostra.geojson', crs=crs_original)
+    limite_imovel_original = gpd.read_file('.streamlit/fontes/areaImovel_amostra.geojson', crs=crs_original)
+    reserva_legal_original = gpd.read_file('.streamlit/fontes/reservaLegal_amostra.geojson', crs=crs_original)
+    vegetacao_nativa_original = gpd.read_file('.streamlit/fontes/vegetacaoNativa_amostra.geojson', crs=crs_original)
 
     # Seleção do código do imóvel
     codigo = st.selectbox('Selecione o código do imóvel', limite_imovel_original['cod_imovel'].unique())
@@ -62,13 +63,19 @@ with st.container():
     folium.GeoJson(reserva_selecionada_original, name='Reserva Legal',
                    style_function=lambda x: {'color': '#FFA500', 'fillColor': '#FFA500', 'fillOpacity': 0.5}).add_to(m)
     folium.GeoJson(vegetacao_selecionada_original, name='Vegetação Nativa',
-                   style_function=lambda x: {'color': 'green', 'fillColor': 'green', 'fillOpacity': 0.5},overlay=False).add_to(m)
+                   style_function=lambda x: {'color': 'darkgreen', 'fillColor': 'darkgreen', 'fillOpacity': 0.5, 'dashArray': '5, 5'}).add_to(m)
     folium.GeoJson(apd_original, name='APD',
                    style_function=lambda x: {'color': '#FF69B4', 'fillOpacity': 0.5}).add_to(m)
     folium.GeoJson(aud_original, name='AUD',
                    style_function=lambda x: {'color': '#800080', 'fillOpacity': 0.5}).add_to(m)
 
     # Adicionar controle de camadas
+    folium.TileLayer(
+    tiles='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+    attr='Esri',
+    name='Esri Satellite',
+    overlay=False,
+    control=True).add_to(m)
     folium.LayerControl().add_to(m)
 
     # Calcular áreas no sistema de coordenadas SIRGAS 2000 UTM Zone 22S
@@ -85,6 +92,7 @@ with st.container():
     # Criar gráfico de pizza interativo
     fig = px.pie(values=[apd_area_sirgas, aud_area_sirgas, total_area_sirgas - apd_area_sirgas - aud_area_sirgas],
                 names=['APD', 'AUD', 'Inviabilidade para REDD'],
+                color_discrete_sequence=['#FF69B4', '#800080', '#D3D3D3'],
                 title='Áreas potenciais para REDD+')
 
     # Layout do Streamlit
@@ -93,7 +101,6 @@ with st.container():
     with col1:
         st.subheader('Mapa')
         st_folium(m, width=800, height=600)
-
 
     with col2:
         st.plotly_chart(fig)
